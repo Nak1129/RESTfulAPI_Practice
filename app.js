@@ -78,6 +78,37 @@ app.put("/students/:_id", async (req, res) => {
     res.status(400).send(e);
   }
 });
+
+class NewData {
+  constructor() {}
+  setProperty(key, value) {
+    if (key !== "merit" && key !== "other") {
+      this[key] = value;
+    } else {
+      this[`scholarship.${key}`] = value;
+    }
+  }
+}
+
+app.patch("/students/:_id", async (req, res) => {
+  try {
+    let { _id } = req.params;
+    let newObject = new NewData();
+    for (let property in req.body) {
+      newObject.setProperty(property, req.body[property]);
+    }
+
+    let newData = await Student.findByIdAndUpdate({ _id }, newObject, {
+      new: true,
+      runValidators: true,
+      //不能寫overwrite:true 會重複寫newObject
+    });
+    res.send({ msg: "成功更新學生資料!", updateData: newData });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 app.listen(3000, () => {
   console.log("3000正在執行");
 });
