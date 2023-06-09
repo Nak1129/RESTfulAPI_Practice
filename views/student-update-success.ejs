@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>成功更新學生</title>
+    <style>
+      table,
+      tr,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>成功更新學生資料</h1>
+    <p>以下是資料</p>
+    <table>
+      <tr>
+        <td>學生id</td>
+        <td>姓名</td>
+        <td>年齡</td>
+        <td>主修</td>
+        <td>other獎學金</td>
+        <td>merit獎學金</td>
+      </tr>
+
+      <tr>
+        <td><%= newData._id %></td>
+        <td><%= newData.name %></td>
+        <td><%= newData.age %></td>
+        <td><%= newData.major %></td>
+        <td><%= newData.scholarship.other %></td>
+        <td><%= newData.scholarship.merit %></td>
+      </tr>
+    </table>
+    <a href="/students">回到首頁</a>
+  </body>
+</html>

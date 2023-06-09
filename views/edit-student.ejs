@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>修改學生</title>
+  </head>
+  <body>
+    <form action="/students/<%=foundStudent._id%>?_method=PUT" method="POST">
+      <label for="name">姓名:</label>
+      <input type="text" name="name" value="<%=foundStudent.name%>" /><br />
+      <label for="age">年紀:</label>
+      <input type="number" name="age" value="<%=foundStudent.age%>" />
+      <label for="major">主修:</label>
+      <input type="text" name="major" value="<%=foundStudent.major%>" />
+      <label for="merit">merit獎學金:</label>
+      <input
+        type="text"
+        name="merit"
+        value="<%=foundStudent.scholarship.merit%>"
+      />
+      <label for="other">other獎學金:</label>
+      <input
+        type="text"
+        name="other"
+        value="<%=foundStudent.scholarship.other%>"
+      />
+      <button>更新學生資料</button>
+    </form>
+  </body>
+</html>
